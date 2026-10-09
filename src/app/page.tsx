@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <Marquee/>
       
-      <div className="bg-[#F5F7F5] pb-10">
+      <div className="bg-[#F0F5F0] pb-10">
         <Banner/>
         <PriceUpDown/>
        

@@ -1,36 +1,32 @@
-import Link from 'next/link';
+import NavActiveItem from "./NavActiveItem";
 
-interface Category{
-  id:string;
-  slug:string;
-  nameBn:string;
-  icon:string;
+interface Category {
+  id: string;
+  slug: string;
+  nameBn: string;
+  icon: string;
 }
 
-const NavLinks = async() => {
-  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/categories");
-  const categories:Category[] = await res.json();
-  // console.log(categories);
+const NavLinks = async () => {
+  const res = await fetch(
+    "https://api.abcz.workers.dev/api/bazardor/categories"
+  );
 
-
+  const categories: Category[] = await res.json();
 
   return (
-
-    <div className='flex gap-8 pl-10 mt-5'>
-      {
-        categories?.map((category)=>{
-          return(
-            <div key={category.id}>
-              <Link className='flex gap-1' href={`/categories/${category.slug}`}>
-                <span>{category.icon}</span>
-                <span>{category.nameBn}</span>
-              </Link>
-            </div>
-          )
-        })
-      }
+    <div className="flex items-center gap-4 pl-10 mt-5 overflow-x-auto py-2">
+      {categories?.map((category) => (
+        <div key={category.id}>
+          <NavActiveItem
+            slug={category.slug}
+            nameBn={category.nameBn}
+            icon={category.icon}
+          />
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default NavLinks;
