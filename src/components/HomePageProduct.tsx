@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface Product {
@@ -27,14 +28,14 @@ const HomePageProduct = async () => {
 
   // increased products
   const increasedProducts = data
-    .filter((item: any) => item.change?.dir === "up")
-    .sort((a: any, b: any) => b.change.pct - a.change.pct)
+    .filter((item: Product) => item.change?.dir === "up")
+    .sort((a: Product, b: Product) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
   // decreased products
   const decreasedProducts = data
-    .filter((item: any) => item.change?.dir === "down")
-    .sort((a: any, b: any) => Math.abs(b.change.pct) - Math.abs(a.change.pct))
+    .filter((item: Product) => item.change?.dir === "down")
+    .sort((a: Product, b: Product) => Math.abs(b.change.pct) - Math.abs(a.change.pct))
     .slice(0, 6);
 
   return (
@@ -45,7 +46,8 @@ const HomePageProduct = async () => {
       {/* increased products */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {increasedProducts?.map((product: Product) => (
-          <div
+          <Link
+            href={`/product/${product.id}`}
             key={product.id}
             className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between"
           >
@@ -81,7 +83,7 @@ const HomePageProduct = async () => {
                 ▲ {Math.abs(Number(product.change?.pct))}%
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -91,7 +93,7 @@ const HomePageProduct = async () => {
       {/* decreased products */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {decreasedProducts?.map((product: Product) => (
-          <div
+          <Link href={`/product/${product.id}`}
             key={product.id}
             className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between"
           >
@@ -123,21 +125,24 @@ const HomePageProduct = async () => {
                 </span>
               </div>
 
-              <span className="text-xs font-bold text-green-600 bg-red-50 px-2.5 py-1 rounded-full flex items-center gap-1">
+              <span className="text-xs font-bold text-green-600 bg-green-50 px-2.5 py-1 rounded-full flex items-center gap-1">
                 ▼ {Math.abs(Number(product.change?.pct))}%
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
-
-{/* All products  */}
-      <h1 className="font-bold mb-3 mt-12 text-2xl">সব পণ্য</h1>
-      <p className="mb-5 text-gray-400">মোট ৩৩টি পণ্য দেখানো হচ্ছে</p>
+      {/* All products  */}
+      <h1 id="all-products" className="font-bold mb-3 mt-12 text-2xl">
+        সব পণ্য
+      </h1>
+      <p className="mb-5 text-gray-400">
+        মোট {data.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {data?.map((product: Product) => (
-          <div
+          <Link href={`/product/${product.id}`}
             key={product.id}
             className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between"
           >
@@ -169,8 +174,7 @@ const HomePageProduct = async () => {
                 </span>
               </div>
 
-
-              <span  className="text-xs font-bold bg-red-50 px-2.5 py-1 rounded-full flex items-center gap-1">
+              <span className="text-xs font-bold bg-red-50 px-2.5 py-1 rounded-full flex items-center gap-1">
                 {product.change.dir === "up" ? (
                   <span className="text-red-700"> ▲ {product.change.pct}%</span>
                 ) : product.change.dir === "down" ? (
@@ -186,7 +190,7 @@ const HomePageProduct = async () => {
                 )}
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

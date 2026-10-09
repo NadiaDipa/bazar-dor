@@ -29,7 +29,7 @@ const MarqueeBazar = async () => {
       {products?.map((product) => {
         return (
           <div
-            className="iflex items-center whitespace-nowrap px-6 border-r border-gray-200"
+            className="flex items-center whitespace-nowrap px-6 border-r border-gray-200"
             key={product.id}
           >
             <span>{product.categoryIcon}</span>

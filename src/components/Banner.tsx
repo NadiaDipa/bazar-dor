@@ -22,9 +22,9 @@ const Banner = () => {
               সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
             </p>
             <div className="card-actions justify-start">
-              <button className="btn bg-green-700 hover:bg-emerald-700 text-white border-none px-6 rounded-xl shadow-sm">
+              <a href="#all-products" className="btn bg-green-700 hover:bg-emerald-700 text-white border-none px-6 rounded-xl shadow-sm">
                 সব পণ্য দেখুন
-              </button>
+              </a>
             </div>
           </div>
 
