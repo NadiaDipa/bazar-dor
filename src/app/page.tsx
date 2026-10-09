@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import Marquee from "@/components/Marquee";
+import PriceUpDown from "@/components/PriceUpDown";
 import Image from "next/image";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       
       <div className="bg-[#F5F7F5] pb-10">
         <Banner/>
+        <PriceUpDown/>
        
       </div>
     </div>

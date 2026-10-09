@@ -13,11 +13,21 @@ interface Products{
 }
 
 
+const banglaUnit = (unit: string) => {
+  if (unit === "kg") return "কেজি";
+  if (unit === "litre") return "লিটার";
+  if (unit === "dozen") return "ডজন";
+  return unit;
+};
+
+
+
 
 const MarqueeBazar = async() => {
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products');
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products');
     const products:Products[] = await res.json();
-    console.log(products)
+    // console.log(products)
+    
 
   return (
    <Marquee autoFill speed={40} className='mt-5'>
@@ -28,7 +38,7 @@ const MarqueeBazar = async() => {
                     <div className='iflex items-center whitespace-nowrap px-6 border-r border-gray-200' key={product.id}>
                         <span>{product.categoryIcon}</span>
                         <span> {product.nameBn}</span>
-                        <span> {product.today} টাকা/{product.unit}</span>
+                        <span> {(product.today).toLocaleString("bn-BD")} টাকা/{banglaUnit(product.unit)}</span>
 
                         <span>
                             {
