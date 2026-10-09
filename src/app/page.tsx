@@ -1,6 +1,6 @@
 import Banner from "@/components/Banner";
 import Marquee from "@/components/Marquee";
-import PriceUpDown from "@/components/PriceUpDown";
+import PriceUpDown from "@/components/HomePageProduct";
 import Image from "next/image";
 
 export default function Home() {
