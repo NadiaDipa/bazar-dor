@@ -15,7 +15,7 @@ export default function NavLinks() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.abcz.workers.dev/api/bazardor/categories")
+    fetch("https://openapi.programming-hero.com/api/bazardor/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
@@ -32,7 +32,7 @@ export default function NavLinks() {
   }
 
   return (
-    <div className="flex items-center gap-4 pl-10 mt-5 overflow-x-auto py-2">
+    <div className="flex items-center gap-4 mt-5 overflow-x-auto py-2">
       {categories?.map((category) => (
         <div key={category.id}>
           <NavActiveItem

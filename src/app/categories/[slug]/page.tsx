@@ -40,7 +40,7 @@ const CategoryDetails = () => {
         setLoading(true);
 
         const res = await fetch(
-          `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`
+          `https://openapi.programming-hero.com/api/bazardor/products?category=${slug}`
         );
 
         if (!res.ok) {

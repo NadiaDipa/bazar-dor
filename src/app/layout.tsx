@@ -3,6 +3,7 @@ import { Hind_Siliguri} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/Footer";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header/>
         {children}
         <Toaster position="top-center" reverseOrder={false} />
+        <Footer/>
       </body>
     </html>
   );

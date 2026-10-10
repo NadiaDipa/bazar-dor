@@ -2,13 +2,14 @@
 
 import React from "react";
 import NavLinks from "@/components/NavLinks";
-import { authClient, signOut, useSession } from "@/lib/auth-client";
+import { signOut, useSession } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
+
   const date = new Date().toLocaleDateString("bn-BD", {
     dateStyle: "full",
   });
@@ -24,13 +25,16 @@ const Header = () => {
     });
   };
 
-
   return (
     <header className="max-w-6xl mx-auto w-full">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+            >
               <svg
                 aria-label="Menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +51,7 @@ const Header = () => {
                 />
               </svg>
             </div>
+
             <ul
               tabIndex={-1}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -70,28 +75,35 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-3">
+
+          <Link href='/' className="flex items-center gap-3">
+
             <div className="bg-green-700 p-3 rounded-2xl shrink-0">
-              <img className="w-10 h-10" src="/logo-icon.png" alt="Logo" />
+              <img
+                className="w-10 h-10"
+                src="/logo-icon.png"
+                alt="Logo"
+              />
             </div>
+
             <div className="flex flex-col">
               <a className="font-bold text-3xl">বাজার দর</a>
               <div className="text-gray-600">{date}</div>
             </div>
-          </div>
+          </Link>
         </div>
 
-        {/* User Session with Profile Dropdown / Sign in / Sign up */}
+        {/* User Session */}
         <div className="navbar-end">
           {session?.user ? (
             <div className="dropdown dropdown-end">
-              {/* Trigger Profile Info */}
+              {/* Profile Info */}
               <div
                 tabIndex={0}
                 role="button"
-                className="flex items-center gap-2 cursor-pointer py-1 px-2 rounded-full hover:bg-gray-100 transition select-none"
+                className="flex items-center gap-2.5 cursor-pointer py-1.5 px-3 rounded-full hover:bg-gray-100 transition select-none"
               >
-                <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-200">
+                <div className="w-11 h-11 rounded-full overflow-hidden border border-gray-200 shrink-0">
                   <img
                     src={
                       session.user.image ||
@@ -101,37 +113,44 @@ const Header = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <span className="font-medium text-gray-800 text-sm hidden sm:inline">
+
+                <span className="font-semibold text-gray-800 text-base hidden sm:inline">
                   {session.user.name}
                 </span>
-                <span className="text-xs text-gray-500">▾</span>
+
+                <span className="text-sm text-gray-500">
+                  ▾
+                </span>
               </div>
 
               {/* Dropdown Card */}
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-white rounded-2xl z-[100] mt-3 w-64 p-3 shadow-xl border border-gray-100 space-y-1"
+                className="dropdown-content menu bg-white rounded-2xl z-[100] mt-3 w-72 p-3.5 shadow-xl border border-gray-100 space-y-1.5"
               >
-                <li className="px-3 py-2 border-b border-gray-100 mb-1 pointer-events-none">
-                  <p className="font-bold text-gray-900 text-sm m-0 p-0">
+                <li className="px-3 py-2.5 border-b border-gray-100 mb-1 pointer-events-none">
+                  <p className="font-bold text-gray-900 text-base m-0 p-0">
                     {session.user.name}
                   </p>
-                  <p className="text-xs text-gray-500 truncate m-0 p-0">
+
+                  <p className="text-sm text-gray-500 truncate m-0 p-0 mt-0.5">
                     {session.user.email}
                   </p>
                 </li>
+
                 <li>
                   <Link
                     href="/profile"
-                    className="py-2.5 px-3 text-gray-700 font-medium hover:bg-gray-50 rounded-xl flex items-center gap-2"
+                    className="py-3 px-3.5 text-gray-700 font-medium hover:bg-gray-50 rounded-xl flex items-center gap-2.5 text-base"
                   >
                     👤 আমার প্রোফাইল
                   </Link>
                 </li>
+
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="py-2.5 px-3 text-red-600 font-medium hover:bg-red-50 rounded-xl w-full text-left cursor-pointer flex items-center gap-2"
+                    className="py-3 px-3.5 text-red-600 font-medium hover:bg-red-50 rounded-xl w-full text-left cursor-pointer flex items-center gap-2.5 text-base"
                   >
                     ↩ সাইন আউট
                   </button>
@@ -139,13 +158,17 @@ const Header = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <Link href="/sign-in" className="btn btn-sm">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/sign-in"
+                className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition shadow-sm"
+              >
                 সাইন ইন
               </Link>
+
               <Link
                 href="/sign-up"
-                className="btn btn-sm bg-green-700 text-white hover:bg-green-800"
+                className="px-4 py-2 text-sm font-semibold bg-[#00873E] text-white rounded-xl hover:bg-[#007233] transition shadow-sm"
               >
                 সাইন আপ
               </Link>
