@@ -1,6 +1,6 @@
 "use client";
 
-import { signUp } from "@/lib/auth-client";
+import { authClient, signIn, signUp } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -29,12 +29,12 @@ export default function SignUpPage() {
         name: data.name as string,
         email: data.email as string,
         password: data.password as string,
-
       });
       console.log(signUpData, error);
 
       if (error) {
-        const errorMessage = error.message || "এই ইমেইল দিয়ে ইতিমধ্যে একটি অ্যাকাউন্ট রয়েছে!";
+        const errorMessage =
+          error.message || "এই ইমেইল দিয়ে ইতিমধ্যে একটি অ্যাকাউন্ট রয়েছে!";
         toast.error(errorMessage);
         return;
       }
@@ -42,15 +42,23 @@ export default function SignUpPage() {
       toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
       router.push("/");
       router.refresh();
-
     } catch (error) {
       toast("কোথাও কোনো ত্রুটি ঘটেছে, আবার চেষ্টা করুন!");
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    const data = await signIn.social({
+      provider: "google",
+    });
+  };
 
+ const handleGithubSignIn = async () => {
+    const data = await signIn.social({
+        provider: "github"
+    })
+}
 
-  
   return (
     <div className="min-h-screen bg-[#F4F9F4] flex flex-col items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
       {/* Top Header Section */}
@@ -167,6 +175,7 @@ export default function SignUpPage() {
         {/* Social Login Buttons */}
         <div className="grid grid-cols-2 gap-3">
           <button
+            onClick={handleGoogleSignIn}
             type="button"
             className="flex items-center justify-center gap-2 py-2.5 px-3 border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors shadow-sm"
           >
@@ -194,6 +203,7 @@ export default function SignUpPage() {
 
           <button
             type="button"
+            onClick={handleGithubSignIn}
             className="flex items-center justify-center gap-2 py-2.5 px-3 border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors shadow-sm"
           >
             {/* GitHub Icon SVG */}
