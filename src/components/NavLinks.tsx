@@ -18,7 +18,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   useEffect(() => {
-    fetch("https://api.abcz.workers.dev/api/bazardor/categories")
+    fetch("https://openapi.programming-hero.com/api/bazardor/categories")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Categories fetch failed");

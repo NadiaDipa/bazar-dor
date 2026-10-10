@@ -5,7 +5,7 @@ Bazar Dor is a modern, responsive web application built to help users check and 
 ---
 
 ## 🚀 Live Demo
-- **Live URL:** [Insert Vercel / Deployment Link Here]
+- **Live URL:** [https://bazar-dor-psi-indol.vercel.app/]
 
 ---
 
