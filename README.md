@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bazar Dor (বাজার দর) - Daily Market Price Tracker
 
-## Getting Started
+Bazar Dor is a modern, responsive web application built to help users check and stay updated with daily essential commodity prices (rice, dal, oil, vegetables, fish, meat, eggs, spices, etc.) in Bangladesh.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
+- **Live URL:** [Insert Vercel / Deployment Link Here]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Daily Price Overview:** View up-to-date market prices and price change percentages (increase/decrease) at a glance.
+- **Category-wise Filtering:** Easily navigate through different essential categories like Rice, Dal, Oil, Vegetables, Fish, and Meat.
+- **User Authentication:** Secure sign-in, sign-up, and session management powered by **Better Auth**.
+- **User Profile Management:** View personalized user details and manage profile sessions.
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop screens with a clean UI built using Tailwind CSS and DaisyUI.
+- **Bengali Language Support:** Complete interface designed natively in Bengali.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework:** Next.js (App Router, React)
+- **Styling:** Tailwind CSS, DaisyUI
+- **Authentication:** Better Auth (with MongoDB adapter)
+- **Language:** TypeScript / JavaScript
+- **Deployment:** Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
