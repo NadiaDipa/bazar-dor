@@ -1,11 +1,27 @@
+"use client";
+
 import React from "react";
-import NavLinks from "@/components/NavLinks"
+import NavLinks from "@/components/NavLinks";
+import { signOut, useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const date = new Date().toLocaleDateString("bn-BD",{
-    dateStyle: "full"
-  })
+  const { data: session } = useSession();
+  // console.log(session);
+  const router = useRouter();
+  const date = new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+  });
 
+  const handleSignOut = async () => {
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/sign-in");
+        },
+      },
+    });
+  };
 
   return (
     <header className="max-w-6xl mx-auto w-full">
@@ -64,13 +80,29 @@ const Header = () => {
           </div>
         </div>
 
+        {/* user session with signout, sign in, sign up */}
         <div className="navbar-end">
-          <a className="btn">সাইন ইন</a>
-          <a className="btn bg-green-700 ml-4 text-white">সাইন আপ</a>
+          {session?.user ? (
+            <button
+              onClick={handleSignOut}
+              className="btn btn-error btn-sm text-white"
+            >
+              সাইন আউট
+            </button>
+          ) : (
+            <div className="flex items-center gap-2">
+              <a href="/sign-in" className="btn btn-sm">
+                সাইন ইন
+              </a>
+              <a href="/sign-up" className="btn btn-sm bg-green-700 text-white">
+                সাইন আপ
+              </a>
+            </div>
+          )}
         </div>
       </div>
 
-      <NavLinks/>
+      <NavLinks />
     </header>
   );
 };

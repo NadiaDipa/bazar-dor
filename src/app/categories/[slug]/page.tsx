@@ -133,7 +133,7 @@ const CategoryDetails = () => {
             <Link
               href={`/product/${product.id}`}
               key={product.id}
-              className="flex h-[120px] w-full flex-col justify-between rounded-xl border border-gray-200 bg-white p-3 sm:p-4 hover:shadow-md transition-shadow"
+              className="flex h-30 w-full flex-col justify-between rounded-xl border border-gray-200 bg-white p-3 sm:p-4 hover:shadow-md transition-shadow"
             >
               {/* Product Info */}
               <div className="flex min-w-0 items-center gap-3">
@@ -142,7 +142,7 @@ const CategoryDetails = () => {
                 </div>
 
                 <div className="min-w-0">
-                  <h2 className="break-words text-sm font-bold leading-snug text-gray-800 sm:text-base">
+                  <h2 className="wrap-break text-sm font-bold leading-snug text-gray-800 sm:text-base">
                     {product.nameBn}
                   </h2>
 

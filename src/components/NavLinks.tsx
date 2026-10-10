@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import NavActiveItem from "./NavActiveItem";
 
 interface Category {
@@ -7,12 +10,26 @@ interface Category {
   icon: string;
 }
 
-const NavLinks = async () => {
-  const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
-  );
+export default function NavLinks() {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const categories: Category[] = await res.json();
+  useEffect(() => {
+    fetch("https://api.abcz.workers.dev/api/bazardor/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Categories fetch error:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="pl-10 mt-5 text-sm text-gray-500">লোড হচ্ছে...</div>;
+  }
 
   return (
     <div className="flex items-center gap-4 pl-10 mt-5 overflow-x-auto py-2">
@@ -27,6 +44,4 @@ const NavLinks = async () => {
       ))}
     </div>
   );
-};
-
-export default NavLinks;
+}
