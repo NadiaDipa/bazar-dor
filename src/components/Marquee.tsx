@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee";
+import Link from "next/link";
 
 interface Product {
   id: number;
@@ -35,8 +36,9 @@ const MarqueeBazar = async () => {
               : "text-gray-500 bg-gray-100";
 
           return (
-            <div
-              className="flex items-center gap-2 whitespace-nowrap px-5 border-r border-gray-200 text-sm font-medium"
+            <Link
+              href={`/product/${product.id}`}
+              className="flex items-center gap-2 whitespace-nowrap px-5 border-r border-gray-200 text-sm font-medium hover:bg-gray-100/60 transition-colors cursor-pointer"
               key={product.id}
             >
               <span>{product.categoryIcon}</span>
@@ -54,7 +56,7 @@ const MarqueeBazar = async () => {
                   <>{product.change.pct.toLocaleString("bn-BD")}%</>
                 )}
               </span>
-            </div>
+            </Link>
           );
         })}
       </Marquee>
