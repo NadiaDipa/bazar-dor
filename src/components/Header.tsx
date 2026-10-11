@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="max-w-6xl mx-auto w-full">
+    <header className="bg-[#FFFFFF] sticky top-0 z-50 max-w-6xl mx-auto w-full">
       <div className="navbar bg-base-100 px-3 sm:px-4">
         {/* Navbar Start */}
         <div className="navbar-start flex items-center gap-1 sm:gap-3">
