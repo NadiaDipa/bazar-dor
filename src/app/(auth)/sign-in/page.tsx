@@ -90,7 +90,7 @@ const SignInPage = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="Kompokhe 8 okhor"
+                placeholder="কমপক্ষে ৮ অক্ষর"
                 required
                 className="input input-bordered w-full bg-white border-neutral-300 focus:outline-none focus:border-neutral-500 rounded-lg text-sm"
               />
