@@ -1,19 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 
 export async function proxy(request: NextRequest) {
-    const session = await auth.api.getSession({
-        headers: await headers()
-    })
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
 
-    if(!session) {
-        return NextResponse.redirect(new URL("/sign-in", request.url));
-    }
+  if (!session) {
+    return NextResponse.redirect(new URL("/sign-in", request.url));
+  }
 
-    return NextResponse.next();
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/profile"], // Specify the routes the middleware applies to
+  matcher: [
+    "/categories/:path*",
+    "/product/:path*",
+    "/profile/:path*",
+  ],
 };
